@@ -1,3 +1,4 @@
+
 import 'package:echo_note/appwrite_service.dart';
 import 'package:echo_note/class_list.dart';
 import 'package:echo_note/editlist.dart';
@@ -34,7 +35,7 @@ class _ListscreenState extends State<Listscreen> {
     }
   }
 
-Future<void> _deleteLisst(String LisstId) async {
+  Future<void> _deleteLisst(String LisstId) async {
     try {
       await _appwriteService.deleteLisst(LisstId);
       _loadLissts();
@@ -83,15 +84,15 @@ Future<void> _deleteLisst(String LisstId) async {
                                   PopupMenuButton<String>(
                                       onSelected: (value) {
                                         if (value == 'Edit') {
-                                          
-                                            Navigator.push(
-                                              context,
-                                             MaterialPageRoute(
-                                            builder: (context) =>Editlist(id: lisst.id, title: lisst.title, addlist: lisst.addlist.join(',')),
-                                         ),
-                                        );
-
-
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => Editlist(
+                                                  id: lisst.id,
+                                                  Title: lisst.title,
+                                                  addlist: lisst.addlist),
+                                            ),
+                                          );
                                         } else if (value == 'Delete') {
                                           _deleteLisst(lisst.id);
                                         }
